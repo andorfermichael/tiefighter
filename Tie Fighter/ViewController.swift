@@ -31,6 +31,10 @@ class ViewController: UIViewController {
         
         let displayLink = CADisplayLink(target: self, selector: "gametick:")
         displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+
+        self.motionManager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryZVertical)
+        
+        self.motionManager.deviceMotionUpdateInterval = 1.0/30.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,9 +51,15 @@ class ViewController: UIViewController {
     }
     
     func gametick(displayLink: CADisplayLink) {
-        self.motionManager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryZVertical)
+        if(self.motionManager.deviceMotion != nil) {
+            let roll = self.motionManager.deviceMotion!.attitude.roll
+            var pitch = self.motionManager.deviceMotion!.attitude.pitch
         
-        self.motionManager.deviceMotionUpdateInterval = 1.0/30.0
+            pitch /= 0.5*M_PI
+            crossFighter.center.x += CGFloat(pitch)
+        }
+        
+        
     
     }
     
