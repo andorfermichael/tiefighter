@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreMotion
+import QuartzCore
 
 class ViewController: UIViewController {
     
     var crossView : UIImageView!
     var crossFighter : UIImageView!
+    var motionManager : CMMotionManager! = CMMotionManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,8 @@ class ViewController: UIViewController {
         self.view.addSubview(self.crossFighter) // Zielkreuz zum Hauptview hinzufügen
         self.crossFighter.center = self.view.center // und zentrieren.
         
-
+        let displayLink = CADisplayLink(target: self, selector: "gametick:")
+        displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +45,15 @@ class ViewController: UIViewController {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         UIView.animateWithDuration(0.4, animations: {self.crossView.alpha = 1.0;})
     }
+    
+    func gametick(displayLink: CADisplayLink) {
+        self.motionManager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryZVertical)
+        
+        self.motionManager.deviceMotionUpdateInterval = 1.0/30.0
+    
+    }
+    
+
 
 }
 
