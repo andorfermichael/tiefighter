@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     var crossFighter : UIImageView!
     var motionManager : CMMotionManager! = CMMotionManager()
     let screenSize: CGRect = UIScreen.mainScreen().bounds
+    var fighterHeight : CGFloat = 0.0
+    var fighterWidth : CGFloat = 0.0
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,9 @@ class ViewController: UIViewController {
         self.crossFighter = UIImageView(image:fighterGfx) // crossView als property deklarieren
         self.view.addSubview(self.crossFighter) // Zielkreuz zum Hauptview hinzufügen
         self.crossFighter.center = self.view.center // und zentrieren.
+        
+        fighterHeight = crossFighter.frame.size.height
+        fighterWidth = crossFighter.frame.size.width
         
         let displayLink = CADisplayLink(target: self, selector: "gametick:")
         displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
@@ -52,41 +58,35 @@ class ViewController: UIViewController {
     }
     
     func gametick(displayLink: CADisplayLink) {
-        if(self.motionManager.deviceMotion != nil) {
+        if (self.motionManager.deviceMotion != nil) {
             var roll = self.motionManager.deviceMotion!.attitude.roll
             var pitch = self.motionManager.deviceMotion!.attitude.pitch
         
-            pitch /= 0.1*M_PI
-            roll /= 0.1*M_PI
+            pitch /= 0.1 * M_PI
+            roll /= 0.1 * M_PI
         
-            if (crossFighter.center.x + CGFloat(pitch) > 0 && crossFighter.center.x + CGFloat(pitch) < screenSize.width){
-
+            if (crossFighter.center.x + CGFloat(pitch) < (fighterWidth / 2) + screenSize.width && crossFighter.center.x + CGFloat(pitch) > 0 - (fighterWidth/2)) {
                 crossFighter.center.x += CGFloat(pitch)
             }
-            else if (crossFighter.center.x == 0){
-                crossFighter.center.x = screenSize.width;
+            else if (crossFighter.center.x + CGFloat(pitch) < 0 - (fighterWidth / 2)) {
+                crossFighter.center.x += screenSize.width + CGFloat(pitch) + (fighterWidth / 2)
             }
             else {
-                crossFighter.center.x = 0;
+                crossFighter.center.x = 0 + CGFloat(pitch) - (fighterWidth / 2)
             }
         
         
-            if (crossFighter.center.y + CGFloat(roll) > 0 && crossFighter.center.y + CGFloat(roll) < screenSize.height){
-                crossFighter.center.y += CGFloat(roll)
-            }
-            else if (crossFighter.center.y == 0) {
-                crossFighter.center.y = screenSize.height;
-            }
+        if (crossFighter.center.y + CGFloat(roll) < (fighterHeight / 2) + screenSize.height && crossFighter.center.y + CGFloat(roll) > 0 - (fighterHeight/2)) {
+            crossFighter.center.y += CGFloat(roll)
+        }
+            else if (crossFighter.center.y + CGFloat(roll) < 0 - (fighterHeight / 2)) {
+            crossFighter.center.y = screenSize.height + (fighterHeight / 2)
+        }
             else {
-                crossFighter.center.y = 0;
-            }
-    }
+            crossFighter.center.y = 0 + CGFloat(roll) - (fighterHeight / 2)
+        }
+        }
         
-        
-    
     }
-    
-
-
 }
 
