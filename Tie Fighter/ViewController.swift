@@ -65,26 +65,27 @@ class ViewController: UIViewController {
             pitch /= 0.1 * M_PI
             roll /= 0.1 * M_PI
         
-            if (crossFighter.center.x + CGFloat(pitch) < (fighterWidth / 2) + screenSize.width && crossFighter.center.x + CGFloat(pitch) > 0 - (fighterWidth/2)) {
+            // Horizontal move
+            if (crossFighter.center.x + CGFloat(pitch) < (fighterWidth / 2) + screenSize.width && crossFighter.center.x + CGFloat(pitch) > 0 - (fighterWidth/2)) { // Between left and right borders
                 crossFighter.center.x += CGFloat(pitch)
             }
-            else if (crossFighter.center.x + CGFloat(pitch) < 0 - (fighterWidth / 2)) {
+            else if (crossFighter.center.x + CGFloat(pitch) < 0 - (fighterWidth / 2)) { // Left out
                 crossFighter.center.x += screenSize.width + CGFloat(pitch) + (fighterWidth / 2)
             }
-            else {
+            else { // Right out
                 crossFighter.center.x = 0 + CGFloat(pitch) - (fighterWidth / 2)
             }
         
-        
-        if (crossFighter.center.y + CGFloat(roll) < (fighterHeight / 2) + screenSize.height && crossFighter.center.y + CGFloat(roll) > 0 - (fighterHeight/2)) {
-            crossFighter.center.y += CGFloat(roll)
-        }
-            else if (crossFighter.center.y + CGFloat(roll) < 0 - (fighterHeight / 2)) {
-            crossFighter.center.y = screenSize.height + (fighterHeight / 2)
-        }
+            // Vertical move
+            if (crossFighter.center.y + CGFloat(roll) < (fighterHeight / 2) + screenSize.height && crossFighter.center.y + CGFloat(roll) > 0 - (fighterHeight/2)) { // Between top and bottom borders
+                crossFighter.center.y += CGFloat(roll)
+            }
+            else if (crossFighter.center.y + CGFloat(roll) < 0 - (fighterHeight / 2)) { // Top out
+                crossFighter.center.y = screenSize.height + (fighterHeight / 2)
+            }
             else {
-            crossFighter.center.y = 0 + CGFloat(roll) - (fighterHeight / 2)
-        }
+                crossFighter.center.y = 0 + CGFloat(roll) - (fighterHeight / 2) // Bottom out
+            }
         }
         
     }
