@@ -9,10 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var crossView : UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let crossGfx = UIImage(named:"cross.png") // Grafik liegt auf Wiki
+        self.crossView = UIImageView(image:crossGfx) // crossView als property deklarieren
+        self.view.addSubview(self.crossView) // Zielkreuz zum Hauptview hinzufügen
+        self.crossView.center = self.view.center // und zentrieren.
+
     }
 
     override func didReceiveMemoryWarning() {
