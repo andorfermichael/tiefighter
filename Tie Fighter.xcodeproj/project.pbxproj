@@ -304,6 +304,7 @@
 				8DA2A8E81BE21A5000BCD87B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

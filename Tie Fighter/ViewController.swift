@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var crossView : UIImageView!
     var crossFighter : UIImageView!
     var motionManager : CMMotionManager! = CMMotionManager()
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,12 +53,24 @@ class ViewController: UIViewController {
     
     func gametick(displayLink: CADisplayLink) {
         if(self.motionManager.deviceMotion != nil) {
-            let roll = self.motionManager.deviceMotion!.attitude.roll
+            var roll = self.motionManager.deviceMotion!.attitude.roll
             var pitch = self.motionManager.deviceMotion!.attitude.pitch
         
-            pitch /= 0.5*M_PI
-            crossFighter.center.x += CGFloat(pitch)
-        }
+            pitch /= 0.1*M_PI
+            roll /= 0.1*M_PI
+        
+            if (crossFighter.center.x + CGFloat(pitch) > 0 && crossFighter.center.x + CGFloat(pitch) < screenSize.width){
+
+                crossFighter.center.x += CGFloat(pitch)
+            }
+            else {
+        
+            }
+        
+            if (crossFighter.center.y + CGFloat(roll) > 0 && crossFighter.center.y + CGFloat(roll) < screenSize.height){
+                crossFighter.center.y += CGFloat(roll)
+            }
+    }
         
         
     
