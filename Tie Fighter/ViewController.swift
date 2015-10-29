@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var crossView : UIImageView!
+    var crossFighter : UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,12 @@ class ViewController: UIViewController {
         self.crossView = UIImageView(image:crossGfx) // crossView als property deklarieren
         self.view.addSubview(self.crossView) // Zielkreuz zum Hauptview hinzufügen
         self.crossView.center = self.view.center // und zentrieren.
+        
+        let fighterGfx = UIImage(named:"tie.png") // Grafik liegt auf Wiki
+        self.crossFighter = UIImageView(image:fighterGfx) // crossView als property deklarieren
+        self.view.addSubview(self.crossFighter) // Zielkreuz zum Hauptview hinzufügen
+        self.crossFighter.center = self.view.center // und zentrieren.
+        
 
     }
 
