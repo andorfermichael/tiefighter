@@ -12,6 +12,8 @@
 		8DA2A8DD1BE21A5000BCD87B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8DB1BE21A5000BCD87B /* Main.storyboard */; };
 		8DA2A8DF1BE21A5000BCD87B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8DE1BE21A5000BCD87B /* Assets.xcassets */; };
 		8DA2A8E21BE21A5000BCD87B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8E01BE21A5000BCD87B /* LaunchScreen.storyboard */; };
+		8DA2A8EB1BE2206000BCD87B /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8E91BE2206000BCD87B /* cross.png */; settings = {ASSET_TAGS = (); }; };
+		8DA2A8EC1BE2206000BCD87B /* tie.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8EA1BE2206000BCD87B /* tie.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		8DA2A8DE1BE21A5000BCD87B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DA2A8E11BE21A5000BCD87B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DA2A8E31BE21A5000BCD87B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DA2A8E91BE2206000BCD87B /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cross.png; path = Assets/cross.png; sourceTree = "<group>"; };
+		8DA2A8EA1BE2206000BCD87B /* tie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tie.png; path = Assets/tie.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +61,21 @@
 				8DA2A8D71BE21A5000BCD87B /* AppDelegate.swift */,
 				8DA2A8D91BE21A5000BCD87B /* ViewController.swift */,
 				8DA2A8DB1BE21A5000BCD87B /* Main.storyboard */,
+				8DA2A8ED1BE2208500BCD87B /* Images */,
 				8DA2A8DE1BE21A5000BCD87B /* Assets.xcassets */,
 				8DA2A8E01BE21A5000BCD87B /* LaunchScreen.storyboard */,
 				8DA2A8E31BE21A5000BCD87B /* Info.plist */,
 			);
 			path = "Tie Fighter";
+			sourceTree = "<group>";
+		};
+		8DA2A8ED1BE2208500BCD87B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8DA2A8E91BE2206000BCD87B /* cross.png */,
+				8DA2A8EA1BE2206000BCD87B /* tie.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +137,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DA2A8E21BE21A5000BCD87B /* LaunchScreen.storyboard in Resources */,
+				8DA2A8EC1BE2206000BCD87B /* tie.png in Resources */,
 				8DA2A8DF1BE21A5000BCD87B /* Assets.xcassets in Resources */,
+				8DA2A8EB1BE2206000BCD87B /* cross.png in Resources */,
 				8DA2A8DD1BE21A5000BCD87B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
