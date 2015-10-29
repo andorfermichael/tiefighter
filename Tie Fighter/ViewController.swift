@@ -63,12 +63,22 @@ class ViewController: UIViewController {
 
                 crossFighter.center.x += CGFloat(pitch)
             }
-            else {
-        
+            else if (crossFighter.center.x == 0){
+                crossFighter.center.x = screenSize.width;
             }
+            else {
+                crossFighter.center.x = 0;
+            }
+        
         
             if (crossFighter.center.y + CGFloat(roll) > 0 && crossFighter.center.y + CGFloat(roll) < screenSize.height){
                 crossFighter.center.y += CGFloat(roll)
+            }
+            else if (crossFighter.center.y == 0) {
+                crossFighter.center.y = screenSize.height;
+            }
+            else {
+                crossFighter.center.y = 0;
             }
     }
         
