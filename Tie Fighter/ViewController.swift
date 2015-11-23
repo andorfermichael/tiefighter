@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     var fighterWidth : CGFloat = 0.0
     var crossViewTargetRangeRadius = 25
     var hitCounter = 0;
+    var movementCounter = 0
+    var randX = 0
+    var randY = 0
 
 
     override func viewDidLoad() {
@@ -105,6 +108,19 @@ class ViewController: UIViewController {
     func gametick(displayLink: CADisplayLink) {
         if (self.motionManager.deviceMotion != nil) {
             
+            movementCounter++
+            
+            // After every 10 tick calculation random movement
+            if (movementCounter == 10) {
+                randX = Int.random(-5...5)
+                randY = Int.random(-5...5)
+                movementCounter = 0
+            }
+
+            // Set random position at every tick
+            self.crossFighter.center.x = self.crossFighter.center.x + CGFloat(randX)
+            self.crossFighter.center.y = self.crossFighter.center.y + CGFloat(randY)
+            
             // Get roll and pitch of device
             var roll = self.motionManager.deviceMotion!.attitude.roll
             var pitch = self.motionManager.deviceMotion!.attitude.pitch
@@ -135,7 +151,25 @@ class ViewController: UIViewController {
                 crossFighter.center.y = 0 + CGFloat(roll) - (fighterHeight / 2) // Leave bottom border
             }
         }
+    }
+}
+
+// Random Integer Extension
+extension Int
+{
+    static func random(range: Range<Int> ) -> Int
+    {
+        var offset = 0
         
+        if range.startIndex < 0   // allow negative ranges
+        {
+            offset = abs(range.startIndex)
+        }
+        
+        let mini = UInt32(range.startIndex + offset)
+        let maxi = UInt32(range.endIndex   + offset)
+        
+        return Int(mini + arc4random_uniform(maxi - mini)) - offset
     }
 }
 
