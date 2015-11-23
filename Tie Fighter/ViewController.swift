@@ -15,25 +15,37 @@ class ViewController: UIViewController {
     // Global vars
     var crossView : UIImageView!
     var crossFighter : UIImageView!
+    var hitCounterLabel: UILabel = UILabel()
     var motionManager : CMMotionManager! = CMMotionManager()
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     var fighterHeight : CGFloat = 0.0
     var fighterWidth : CGFloat = 0.0
     var crossViewTargetRangeRadius = 25
+    var hitCounter = 0;
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Cross
         let crossGfx = UIImage(named:"cross.png") // Load graphic cross.png
         self.crossView = UIImageView(image:crossGfx) // Declare crossView as property
         self.view.addSubview(self.crossView) // Add cross to main view
         self.crossView.center = self.view.center // Center cross on screen
         
+        // Fighter
         let fighterGfx = UIImage(named:"tie.png") // Load graphic tie.png
         self.crossFighter = UIImageView(image:fighterGfx) // Declare crossFigher as property
         self.view.addSubview(self.crossFighter) // Add cross fighter to main view
         self.crossFighter.center = self.view.center // Center cross fighter
+        
+        // Hit Counter
+        hitCounterLabel.frame = CGRectMake(10, 10, 60, 30) // Set x, y, width, height
+        hitCounterLabel.textColor = UIColor.whiteColor() // Set text color
+        hitCounterLabel.backgroundColor = UIColor(white: 1, alpha: 0) // Set background to transparent
+        hitCounterLabel.text = "Hits: 0" // Set default value
+        self.view.addSubview(hitCounterLabel) // Add label to view
         
         // Get height and width of cross fighter
         fighterHeight = crossFighter.frame.size.height
@@ -63,6 +75,10 @@ class ViewController: UIViewController {
         // Set tie fighter to random position
         self.crossFighter.center.x = (CGFloat(self.view.frame.width) * CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
         self.crossFighter.center.y = (CGFloat(self.view.frame.height) * CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
+        
+        // Increment hit counter and update label
+        hitCounter += 1
+        hitCounterLabel.text = "Hits: " + String(hitCounter)
         
         // Show tie fighter
         self.crossFighter.alpha = 1.0
