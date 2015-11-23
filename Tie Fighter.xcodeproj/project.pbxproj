@@ -12,8 +12,8 @@
 		8DA2A8DD1BE21A5000BCD87B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8DB1BE21A5000BCD87B /* Main.storyboard */; };
 		8DA2A8DF1BE21A5000BCD87B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8DE1BE21A5000BCD87B /* Assets.xcassets */; };
 		8DA2A8E21BE21A5000BCD87B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8E01BE21A5000BCD87B /* LaunchScreen.storyboard */; };
-		8DA2A8EB1BE2206000BCD87B /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8E91BE2206000BCD87B /* cross.png */; settings = {ASSET_TAGS = (); }; };
-		8DA2A8EC1BE2206000BCD87B /* tie.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8EA1BE2206000BCD87B /* tie.png */; settings = {ASSET_TAGS = (); }; };
+		8DA2A8EB1BE2206000BCD87B /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8E91BE2206000BCD87B /* cross.png */; };
+		8DA2A8EC1BE2206000BCD87B /* tie.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DA2A8EA1BE2206000BCD87B /* tie.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
