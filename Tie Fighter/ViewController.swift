@@ -55,14 +55,28 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Tie fighter has been shooten
+    func shoot() {
+        // Hide tie fighter
+        self.crossFighter.alpha = 0.0
+        
+        // Set tie fighter to random position
+        self.crossFighter.center.x = (CGFloat(self.view.frame.width) * CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
+        self.crossFighter.center.y = (CGFloat(self.view.frame.height) * CGFloat(Float(arc4random()) / Float(UINT32_MAX)))
+        
+        // Show tie fighter
+        self.crossFighter.alpha = 1.0
+    }
+    
     // Begin touch on device
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         UIView.animateWithDuration(0.4, animations: {self.crossView.alpha = 0.2;})
+        // If tie fighter is in cross center, hide tie fighter
         if (crossView.center.x >= crossFighter.center.x - CGFloat(crossViewTargetRangeRadius) &&
             crossView.center.x <= crossFighter.center.x + CGFloat(crossViewTargetRangeRadius)) &&
-            (crossView.center.y >= crossFighter.center.y - CGFloat(crossViewTargetRangeRadius) &&
+           (crossView.center.y >= crossFighter.center.y - CGFloat(crossViewTargetRangeRadius) &&
             crossView.center.y <= crossFighter.center.y + CGFloat(crossViewTargetRangeRadius)) {
-            self.crossFighter.alpha = 0.0
+            shoot()
         }
     }
     
