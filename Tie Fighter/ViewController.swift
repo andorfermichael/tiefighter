@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     var fighterHeight : CGFloat = 0.0
     var fighterWidth : CGFloat = 0.0
+    var crossViewTargetRangeRadius = 25
 
 
     override func viewDidLoad() {
@@ -57,6 +58,12 @@ class ViewController: UIViewController {
     // Begin touch on device
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         UIView.animateWithDuration(0.4, animations: {self.crossView.alpha = 0.2;})
+        if (crossView.center.x >= crossFighter.center.x - CGFloat(crossViewTargetRangeRadius) &&
+            crossView.center.x <= crossFighter.center.x + CGFloat(crossViewTargetRangeRadius)) &&
+            (crossView.center.y >= crossFighter.center.y - CGFloat(crossViewTargetRangeRadius) &&
+            crossView.center.y <= crossFighter.center.y + CGFloat(crossViewTargetRangeRadius)) {
+            self.crossFighter.alpha = 0.0
+        }
     }
     
     // End touch on device
